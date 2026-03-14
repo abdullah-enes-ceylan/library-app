@@ -29,7 +29,7 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book getBookById(@PathVariable Long id){
-        return bookService.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return bookService.findById(id);
     }
 
     @DeleteMapping("/{id}")

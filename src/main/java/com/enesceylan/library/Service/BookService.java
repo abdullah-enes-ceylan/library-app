@@ -4,6 +4,7 @@ package com.enesceylan.library.Service;
 import com.enesceylan.library.Repository.BookRepository;
 import com.enesceylan.library.dto.BookRequest;
 import com.enesceylan.library.entity.Book;
+import com.enesceylan.library.exception.BookNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,8 @@ public class BookService{
         return bookRepository.findAll();
     }
 
-    public Optional<Book> findById(Long id){
-        return bookRepository.findById(id);
+    public Book findById(Long id){
+        return bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException(id));
     }
 
     public Book save(BookRequest request){
