@@ -1,6 +1,7 @@
 package com.enesceylan.library.controller;
 
 import com.enesceylan.library.Service.BookService;
+import com.enesceylan.library.dto.BookRequest;
 import com.enesceylan.library.entity.Book;
 import jakarta.persistence.Id;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class BookController {
     }
 
     @PostMapping("")
-    public Book saveBook(@RequestBody Book book){
+    public Book saveBook(@RequestBody BookRequest book){
         return bookService.save(book);
     }
 
@@ -37,9 +38,8 @@ public class BookController {
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@PathVariable Long id, @RequestBody Book book){
-        book.setId(id);
-        return bookService.update(book);
+    public Book updateBook(@PathVariable Long id, @RequestBody BookRequest book){
+        return bookService.update(id, book);
     }
 }
 
