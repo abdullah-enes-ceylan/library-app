@@ -30,4 +30,8 @@ public class BookService{
         bookRepository.deleteById(id);
     }
 
+    public Book update(Book book) {
+        return bookRepository.save(book);
+    }
+
 }
